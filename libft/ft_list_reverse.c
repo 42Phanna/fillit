@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_factorial.c                                     :+:      :+:    :+:   */
+/*   ft_list_reverse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanna <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcoutare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/01 14:47:30 by phanna            #+#    #+#             */
-/*   Updated: 2017/05/04 14:33:39 by phanna           ###   ########.fr       */
+/*   Created: 2017/03/23 19:34:58 by jcoutare          #+#    #+#             */
+/*   Updated: 2017/04/26 17:31:30 by jcoutare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_factorial(int nb)
+void	ft_list_reverse(t_list **begin_list)
 {
-	if (nb == 0)
-		return (1);
-	else if (nb > 0 && nb < 13)
+	t_list *next;
+	t_list *prev;
+
+	prev = NULL;
+	while (*begin_list)
 	{
-		if (nb >= 1)
-			return (nb * ft_factorial(nb - 1));
+		next = (*begin_list)->next;
+		(*begin_list)->next = prev;
+		prev = *begin_list;
+		*begin_list = next;
 	}
-	return (0);
+	*begin_list = prev;
 }

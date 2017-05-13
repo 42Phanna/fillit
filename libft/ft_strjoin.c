@@ -3,33 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanna <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcoutare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/25 00:42:05 by phanna            #+#    #+#             */
-/*   Updated: 2017/04/25 00:54:22 by phanna           ###   ########.fr       */
+/*   Created: 2017/04/10 16:01:43 by jcoutare          #+#    #+#             */
+/*   Updated: 2017/04/26 15:32:11 by jcoutare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		i;
-	int		j;
-	char	*tab;
+	char		*str;
+	size_t		i;
+	size_t		j;
+	size_t		size;
 
-	i = -1;
-	j = -1;
-	if (s1 && s2)
+	i = 0;
+	j = 0;
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	size = ft_strlen(s1) + ft_strlen(s2);
+	if ((str = malloc(sizeof(char) * (size + 1))) == 0)
+		return (NULL);
+	while (s1[i])
 	{
-		if (!(tab = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
-			return (tab);
-		while (s1[++i])
-			tab[i] = s1[i];
-		while (s2[++j])
-			tab[i + j] = s2[j];
-		tab[i + j] = '\0';
-		return (tab);
+		str[i] = s1[i];
+		i++;
 	}
-	return (0);
+	while (s2[j])
+	{
+		str[i + j] = s2[j];
+		j++;
+	}
+	str[i + j] = '\0';
+	return (str);
 }

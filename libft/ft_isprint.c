@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanna <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcoutare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/14 13:49:39 by phanna            #+#    #+#             */
-/*   Updated: 2017/05/04 15:20:42 by phanna           ###   ########.fr       */
+/*   Created: 2017/04/13 14:02:05 by jcoutare          #+#    #+#             */
+/*   Updated: 2017/04/13 14:02:18 by jcoutare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int c)
+int		ft_isprint(int c)
 {
-	if (c >= 32 && c <= 126)
+	if (c >= ' ' && c <= '~' && (c >= '?' || c <= '@'))
 		return (1);
 	return (0);
 }

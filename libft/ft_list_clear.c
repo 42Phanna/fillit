@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_list_clear.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanna <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcoutare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/04 15:16:33 by phanna            #+#    #+#             */
-/*   Updated: 2017/05/04 15:17:48 by phanna           ###   ########.fr       */
+/*   Created: 2017/03/23 14:18:33 by jcoutare          #+#    #+#             */
+/*   Updated: 2017/04/26 17:34:40 by jcoutare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_str_is_alpha(char *str)
+void	ft_list_clear(t_list **begin_list)
 {
-	int i;
-	int n;
+	t_list	*tmp;
+	t_list	*tofree;
 
-	n = 0;
-	i = 0;
-	while (str[i] != '\0')
+	tmp = *begin_list;
+	tofree = NULL;
+	while (tmp)
 	{
-		if ((str[i] >= 'A' && str[i] <= 'Z') ||
-				(str[i] >= 'a' && str[i] <= 'z'))
-			i++;
-		else
-		{
-			n = 1;
-			i++;
-		}
+		tofree = tmp;
+		tmp = tmp->next;
+		free(tofree);
 	}
-	if (n == 1)
-		return (0);
-	else
-		return (1);
+	*begin_list = NULL;
 }

@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_power.c                                         :+:      :+:    :+:   */
+/*   ft_tetri_add.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phanna <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/01 14:47:24 by phanna            #+#    #+#             */
-/*   Updated: 2017/05/04 14:34:14 by phanna           ###   ########.fr       */
+/*   Created: 2017/05/10 15:37:24 by phanna            #+#    #+#             */
+/*   Updated: 2017/05/10 15:58:25 by phanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-int	ft_power(int nb, int power)
+void	ft_tetri_add(t_tetri **lst, t_tetri *new)
 {
-	if (power == 0)
-		return (1);
-	if (power < 0)
-		return (0);
-	return (nb * ft_power(nb, power - 1));
+	t_tetri	*tmp;
+
+	if (lst)
+	{
+		if ((*lst) == NULL)
+			*lst = new;
+		else
+		{
+			tmp = *lst;
+			while (tmp->next)
+				tmp = tmp->next;
+			tmp->next = new;
+			new->prev = tmp;
+		}
+	}
 }

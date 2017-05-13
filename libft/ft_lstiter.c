@@ -3,23 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanna <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcoutare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/28 09:06:21 by phanna            #+#    #+#             */
-/*   Updated: 2017/04/28 09:17:18 by phanna           ###   ########.fr       */
+/*   Created: 2017/04/19 17:48:04 by jcoutare          #+#    #+#             */
+/*   Updated: 2017/04/19 17:49:41 by jcoutare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f) (t_list *elem))
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	t_list	*tmp_lst;
-
-	tmp_lst = lst;
-	while (tmp_lst)
+	while (lst)
 	{
-		f(tmp_lst);
-		tmp_lst = tmp_lst->next;
+		(*f)(lst);
+		lst = lst->next;
 	}
 }

@@ -3,82 +3,108 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanna <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcoutare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/25 04:55:37 by phanna            #+#    #+#             */
-/*   Updated: 2017/04/26 12:52:21 by phanna           ###   ########.fr       */
+/*   Created: 2017/04/20 19:19:45 by jcoutare          #+#    #+#             */
+/*   Updated: 2017/04/26 15:38:12 by jcoutare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_strlen_strsplit(char const *str, char c)
+static int		cpt_words(const char *str, char c)
 {
-	int	i;
+	size_t i;
+	size_t cpt_w;
 
 	i = 0;
-	while (str[i] && str[i] != c)
-		++i;
-	return (i);
-}
-
-static void	ft_fill_mal(char const *str, char *mal, int lenf)
-{
-	int	i;
-
-	i = 0;
-	while (i < lenf)
+	cpt_w = 0;
+	while (str[i])
 	{
-		mal[i] = str[i];
+		if (str[i] != c && (str[i + 1] == c || str[i + 1] == '\0'))
+			cpt_w++;
 		i++;
 	}
-	mal[i] = '\0';
+	return (cpt_w);
 }
 
-static int	ft_calcul_p(char const *str, char c)
+static int		*cpt_ltr(const char *str, char c)
 {
-	int i;
-	int p;
+	int			*tab;
+	size_t		i;
+	size_t		cpt_ltr;
+	size_t		j;
 
+	j = 0;
+	cpt_ltr = 0;
+	if ((tab = malloc(sizeof(int) * (cpt_words(str, c) + 1))) == NULL)
+		return (NULL);
+	tab[cpt_words(str, c)] = 0;
 	i = 0;
-	p = 0;
-	while (str[i] != '\0')
+	while (str[i])
 	{
-		while (str[i] == c)
-			i++;
-		if (str[i] != '\0')
-			p++;
-		while (str[i] && str[i] != c)
-			i++;
+		if (str[i] != c)
+			cpt_ltr++;
+		if ((str[i] == c || str[i + 1] == '\0') && cpt_ltr != 0)
+		{
+			tab[j] = cpt_ltr;
+			cpt_ltr = 0;
+			j++;
+		}
+		i++;
 	}
-	return (p);
+	return (tab);
 }
 
-char		**ft_strsplit(char const *str, char c)
+static char		**malloc_tab(const char *str, char c)
 {
-	int		p;
-	int		i;
-	int		j;
-	int		lenf;
-	char	**mal;
+	char		**tab;
+	int			*ltr;
+	size_t		nb_w;
+	size_t		words;
 
-	if (!str)
-		return (0);
-	p = ft_calcul_p(str, c);
-	if (!(mal = (char **)malloc(sizeof(mal) * (p + 1))))
-		return (mal);
-	i = 0;
-	j = -1;
-	while (++j < p)
+	words = 0;
+	if ((ltr = cpt_ltr(str, c)) == NULL)
+		return (NULL);
+	nb_w = cpt_words(str, c);
+	if ((tab = malloc(sizeof(char *) * (nb_w + 1))) == NULL)
+		return (NULL);
+	tab[nb_w] = 0;
+	while (words < nb_w)
 	{
-		while (str[i] && str[i] == c)
-			i++;
-		lenf = ft_strlen_strsplit(str + i, c);
-		if (!(mal[j] = (char *)malloc(sizeof(*mal) * (lenf + 1))))
-			return (mal);
-		ft_fill_mal(str + i, mal[j], lenf);
-		i = i + lenf;
+		if ((tab[words] = malloc(sizeof(char) * (ltr[words] + 1))) == NULL)
+			return (NULL);
+		tab[words][ltr[words]] = '\0';
+		words++;
 	}
-	mal[j] = 0;
-	return (mal);
+	free(ltr);
+	return (tab);
+}
+
+char			**ft_strsplit(const char *str, char c)
+{
+	char		**tab;
+	size_t		i;
+	size_t		words;
+	size_t		ltr;
+
+	if (str == NULL)
+		return (NULL);
+	i = 0;
+	words = 0;
+	ltr = 0;
+	if ((tab = malloc_tab(str, c)) == NULL)
+		return (NULL);
+	while (str[i])
+	{
+		if (str[i] != c)
+			tab[words][ltr++] = str[i];
+		if (str[i] == c && ltr != 0)
+		{
+			words++;
+			ltr = 0;
+		}
+		i++;
+	}
+	return (tab);
 }

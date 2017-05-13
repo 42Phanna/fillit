@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_list_push_back.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcoutare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/14 16:02:13 by jcoutare          #+#    #+#             */
-/*   Updated: 2017/04/11 11:38:49 by jcoutare         ###   ########.fr       */
+/*   Created: 2017/03/22 18:07:33 by jcoutare          #+#    #+#             */
+/*   Updated: 2017/04/26 17:29:12 by jcoutare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dest, const char *src)
+void	ft_list_push_back(t_list **begin_list, void *content,
+						size_t content_size)
 {
-	int i;
+	t_list	*list;
 
-	i = 0;
-	while (src[i])
+	if (*begin_list == NULL)
+		*begin_list = ft_lstnew(content, content_size);
+	else
 	{
-		dest[i] = src[i];
-		i++;
+		list = *begin_list;
+		while (list->next)
+			list = list->next;
+		list->next = ft_lstnew(content, content_size);
 	}
-	dest[i] = '\0';
-	return (dest);
 }

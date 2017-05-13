@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_numlen.c                                        :+:      :+:    :+:   */
+/*   ft_tetri_new.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phanna <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/26 12:56:12 by phanna            #+#    #+#             */
-/*   Updated: 2017/04/26 15:11:01 by phanna           ###   ########.fr       */
+/*   Created: 2017/05/10 15:25:42 by phanna            #+#    #+#             */
+/*   Updated: 2017/05/10 15:36:50 by phanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-int	ft_numlen(int n)
+t_tetri	*ft_tetri_new(char *s)
 {
-	int	i;
+	t_tetri	*new;
 
-	if (n == -2147483648)
-		return (10);
-	if (n < 0)
-		n *= -1;
-	i = 0;
-	while (n)
-	{
-		n = n / 10;
-		++i;
-	}
-	return (i);
+	if (!(new = malloc(sizeof(*new))))
+		exit(EXIT_FAILURE);
+	new->next = NULL;
+	new->prev = NULL;
+	new->tab = ft_strdup(s);
+	return (new);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanna <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcoutare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/25 00:55:37 by phanna            #+#    #+#             */
-/*   Updated: 2017/04/25 10:15:06 by phanna           ###   ########.fr       */
+/*   Created: 2017/04/15 17:06:13 by jcoutare          #+#    #+#             */
+/*   Updated: 2017/04/26 15:57:19 by jcoutare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,29 @@
 
 char	*ft_strtrim(char const *s)
 {
-	int		i;
-	int		j;
-	size_t	lim;
-	char	*tab;
+	char		*str;
+	size_t		i;
+	size_t		j;
+	size_t		k;
 
+	k = 0;
 	i = 0;
 	j = 0;
-	if (s)
+	if (s == NULL)
+		return (NULL);
+	if (s[i] != '\0')
+		j = (ft_strlen(s) - 1);
+	while ((s[i]) && (s[i] == ' ' || s[i] == '\n' || s[i] == '\t'))
+		i++;
+	while ((s[j] == ' ' || s[j] == '\n' || s[j] == '\t') && (j > i))
+		j--;
+	if ((str = malloc(sizeof(char) * (j - i + 1))) == NULL)
+		return (NULL);
+	while (i <= j)
 	{
-		lim = ft_strlen_skip_white(s) + 1;
-		if (!(tab = malloc(sizeof(char) * (ft_strlen_skip_white(s) + 2))))
-			return (0);
-		while (s[i] == 32 || s[i] == ',' || s[i] == '\t' || s[i] == '\n')
-			++i;
-		while (lim--)
-		{
-			tab[j] = s[i + j];
-			++j;
-		}
-		tab[j] = '\0';
-		return (tab);
+		str[k++] = s[i];
+		i++;
 	}
-	return (0);
+	str[k] = '\0';
+	return (str);
 }

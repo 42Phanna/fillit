@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
+/*   ft_list_at.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanna <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcoutare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/04 15:17:51 by phanna            #+#    #+#             */
-/*   Updated: 2017/05/04 15:24:40 by phanna           ###   ########.fr       */
+/*   Created: 2017/03/23 15:12:08 by jcoutare          #+#    #+#             */
+/*   Updated: 2017/04/26 17:25:44 by jcoutare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_str_is_numeric(char *str)
+t_list	*ft_list_at(t_list *begin_list, unsigned int nbr)
 {
-	int i;
-	int n;
+	unsigned int	n;
 
 	n = 0;
-	i = 0;
-	while (str[i] != '\0')
+	if (begin_list == NULL)
+		return (NULL);
+	while (n < nbr)
 	{
-		if (str[i] >= '0' && str[i] <= '9')
-			i++;
+		if (begin_list->next)
+			begin_list = begin_list->next;
 		else
-		{
-			n = 1;
-			i++;
-		}
+			return (NULL);
+		n++;
 	}
-	if (n == 1)
-		return (0);
-	else
-		return (1);
+	return (begin_list);
 }

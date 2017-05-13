@@ -3,40 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanna <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcoutare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/17 15:28:55 by phanna            #+#    #+#             */
-/*   Updated: 2017/04/22 18:13:14 by phanna           ###   ########.fr       */
+/*   Created: 2017/04/11 15:32:02 by jcoutare          #+#    #+#             */
+/*   Updated: 2017/04/26 15:42:25 by jcoutare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-	int		i;
-	int		f;
-	int		t;
-	char	tmp;
-	char	*tmp2;
+	size_t i;
 
-	i = 0;
-	f = 0;
-	t = 0;
-	tmp = (char)c;
-	tmp2 = (char *)s;
-	if (c == '\0')
-		return (tmp2 + ft_strlen((char *)s));
-	while (tmp2[i] != '\0')
+	i = ft_strlen(s);
+	if (c == s[i])
+		return ((char *)s + i);
+	while (i > 0)
 	{
-		if (tmp2[i] == tmp)
-		{
-			f = i;
-			t = 1;
-		}
-		++i;
+		i--;
+		if (s[i] == (char)c)
+			return ((char *)s + i);
 	}
-	if (t == 1)
-		return (tmp2 + f);
 	return (0);
 }

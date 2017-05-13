@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanna <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcoutare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/12 16:34:07 by phanna            #+#    #+#             */
-/*   Updated: 2017/04/17 13:55:11 by phanna           ###   ########.fr       */
+/*   Created: 2017/04/11 13:58:53 by jcoutare          #+#    #+#             */
+/*   Updated: 2017/04/13 14:16:30 by jcoutare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t	i;
-	char	*tmp;
+	size_t		i;
+	char		*p;
 
+	p = (char *)s;
 	i = 0;
-	tmp = (char *)s;
 	while (i < n)
 	{
-		tmp[i] = '\0';
-		++i;
+		p[i] = 0;
+		i++;
 	}
 }

@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
+/*   ft_list_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanna <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcoutare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/04 15:19:03 by phanna            #+#    #+#             */
-/*   Updated: 2017/05/04 15:19:43 by phanna           ###   ########.fr       */
+/*   Created: 2017/03/23 09:38:50 by jcoutare          #+#    #+#             */
+/*   Updated: 2017/04/26 17:31:21 by jcoutare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_str_is_uppercase(char *str)
+int	ft_list_size(t_list *begin_list)
 {
 	int i;
-	int n;
 
-	n = 0;
 	i = 0;
-	while (str[i] != '\0')
+	if (begin_list == NULL)
+		return (i);
+	while (begin_list)
 	{
-		if (str[i] >= 'A' && str[i] <= 'Z')
-			i++;
-		else
-		{
-			n = 1;
-			i++;
-		}
+		begin_list = begin_list->next;
+		i++;
 	}
-	if (n == 1)
-		return (0);
-	else
-		return (1);
+	return (i);
 }

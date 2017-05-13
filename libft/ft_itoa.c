@@ -3,39 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanna <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcoutare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/26 12:53:21 by phanna            #+#    #+#             */
-/*   Updated: 2017/04/26 15:21:38 by phanna           ###   ########.fr       */
+/*   Created: 2017/04/19 12:17:43 by jcoutare          #+#    #+#             */
+/*   Updated: 2017/04/20 19:24:37 by jcoutare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-char	*ft_itoa(int n)
+static char		*nbtostr(char *str, int lgt, int n, int neg)
 {
-	int		len;
-	int		neg;
-	char	*tab;
-
-	neg = 0;
-	if (!n)
-		return (ft_strdup("0"));
-	if (n < 0 && (n *= -1))
-		neg = 1;
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	len = ft_numlen(n);
-	if (!(tab = (char *)malloc(sizeof(char) * (len + neg + 1))))
-		return (0);
-	len += neg;
-	tab[len--] = '\0';
-	while (n)
+	if ((str = malloc(sizeof(char) * (lgt + 1))) == NULL)
+		return (NULL);
+	str[lgt--] = '\0';
+	while (n >= 10)
 	{
-		tab[len--] = n % 10 + 48;
+		str[lgt--] = (n % 10 + '0');
 		n = n / 10;
 	}
-	if (neg)
-		tab[0] = '-';
-	return (tab);
+	str[lgt] = (n + '0');
+	if (neg == 2)
+		str[0] = '-';
+	return (str);
+}
+
+char			*ft_itoa(int n)
+{
+	char		*str;
+	int			lgt;
+	int			nb;
+	int			neg;
+
+	lgt = 1;
+	neg = 1;
+	str = NULL;
+	if (n == -2147483648)
+	{
+		str = ft_strdup("-2147483648");
+		return (str);
+	}
+	if (n < 0 && neg++)
+	{
+		n *= -1;
+		lgt++;
+	}
+	nb = n;
+	while (nb >= 10)
+	{
+		nb = nb / 10;
+		lgt++;
+	}
+	return (nbtostr(str, lgt, n, neg));
 }

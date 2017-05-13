@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
+/*   ft_print_words_tables.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phanna <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: jcoutare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/04 15:18:26 by phanna            #+#    #+#             */
-/*   Updated: 2017/05/04 15:18:59 by phanna           ###   ########.fr       */
+/*   Created: 2017/03/20 10:15:59 by jcoutare          #+#    #+#             */
+/*   Updated: 2017/04/20 16:58:53 by jcoutare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_str_is_lowercase(char *str)
+void	ft_print_words_tables(char **tab)
 {
 	int i;
-	int n;
+	int j;
 
-	n = 0;
 	i = 0;
-	while (str[i] != '\0')
+	while (tab[i])
 	{
-		if (str[i] >= 'a' && str[i] <= 'z')
-			i++;
-		else
+		j = 0;
+		while (tab[i][j])
 		{
-			n = 1;
-			i++;
+			ft_putchar(tab[i][j]);
+			j++;
 		}
+		ft_putchar('\n');
+		i++;
 	}
-	if (n == 1)
-		return (0);
-	else
-		return (1);
 }
