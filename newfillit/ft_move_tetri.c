@@ -6,13 +6,13 @@
 /*   By: phanna <phanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 23:41:48 by phanna            #+#    #+#             */
-/*   Updated: 2017/07/02 23:45:08 by phanna           ###   ########.fr       */
+/*   Updated: 2017/07/03 00:30:47 by phanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	ft_move_right(char **str)
+int		ft_move_right(char **str)
 {
 	int i;
 	int j;
@@ -37,7 +37,7 @@ int	ft_move_right(char **str)
 	return (0);
 }
 
-int	ft_move_left(char **str)
+int		ft_move_left(char **str)
 {
 	int i;
 	int j;
@@ -62,7 +62,7 @@ int	ft_move_left(char **str)
 	return (0);
 }
 
-int	ft_move_top(char **str)
+int		ft_move_top(char **str)
 {
 	int	i;
 	int j;
@@ -87,7 +87,7 @@ int	ft_move_top(char **str)
 	return (0);
 }
 
-int	ft_move_bot(char **str)
+int		ft_move_bot(char **str)
 {
 	int	i;
 	int j;
@@ -114,7 +114,14 @@ int	ft_move_bot(char **str)
 
 char	**ft_move_tetri(char **str)
 {
-	while (ft_move_left(str) == 1);
-	while (ft_move_top(str) == 1);
+	int	*pos_left;
+	int	*pos_top;
+
+	*pos_left = ft_move_left(str);
+	*pos_top = ft_move_top(str);
+	while (pos_left == 1)
+		*pos_left = ft_move_left(str);
+	while (ft_move_top(str) == 1)
+		*pos_top = ft_move_top(str);
 	return (str);
 }

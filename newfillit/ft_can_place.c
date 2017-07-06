@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_read.c                                          :+:      :+:    :+:   */
+/*   ft_can_place.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: phanna <phanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/02 22:56:54 by phanna            #+#    #+#             */
-/*   Updated: 2017/07/03 04:46:22 by phanna           ###   ########.fr       */
+/*   Created: 2017/07/03 04:11:52 by phanna            #+#    #+#             */
+/*   Updated: 2017/07/03 04:23:18 by phanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	***ft_read(char *av, char ***tetri, int *nb_tetri)
+int		ft_ishashtag(char **tetri)
 {
-	char	buffer[21 + 1];
-	int		ret;
-	int		fd;
-	int		i;
-	t_pos	**pos;
+	int	j;
+	int	k;
 
-	i = 0;
-	if ((fd = open(av, O_RDONLY)) < 0)
-		return (0);
-	while ((ret = read(fd, buffer, 21)))
+	j = -1;
+	while(tetri[j])
 	{
-		buffer[ret] = '\0';
-		tetri[i] = ft_strsplit(((const char *)buffer), '\n');
-		ft_putendl((const char *)buffer);
-		++i;
+		k = -1;
+		while(tetri[j][++k])
+		{
+
+		}
 	}
-	*nb_tetri = i;
-	tetri[i] = NULL;
-	pos = create_struct(tetri, pos, *nb_tetri);
-	return (tetri);
 }

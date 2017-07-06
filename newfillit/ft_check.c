@@ -6,7 +6,7 @@
 /*   By: phanna <phanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 23:09:22 by phanna            #+#    #+#             */
-/*   Updated: 2017/07/02 23:33:35 by phanna           ###   ########.fr       */
+/*   Updated: 2017/07/03 04:46:49 by phanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int		ft_check_join(char **tetri)
 	int	k;
 	int	join;
 
-	join = 0;
 	j = -1;
+	join = 0;
 	while (tetri[++j])
 	{
 		k = -1;

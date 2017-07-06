@@ -89,9 +89,9 @@ OBJ = $(SRC:.c=.o)
 all : $(NAME)
 
 $(NAME):	$(OBJ)
-			ar rcs $(NAME) $(OBJ)
+			@ar rcs $(NAME) $(OBJ)
 clean:
-		rm -f $(OBJ)
+		@rm -f $(OBJ)
 fclean: clean
-		rm -f libft.a
+		@rm -f libft.a
 re: fclean all

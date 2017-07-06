@@ -6,7 +6,7 @@
 /*   By: phanna <phanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 23:37:37 by phanna            #+#    #+#             */
-/*   Updated: 2017/07/02 23:48:24 by phanna           ###   ########.fr       */
+/*   Updated: 2017/07/03 01:06:33 by phanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ char	**ft_get_map_size(int nb_tetri, int len)
 	map_size = 1;
 	while ((map_size * map_size) < (nb_tetri * 4))
 		map_size++;
+	ft_putstr("map_size:");
+	ft_putnbr(map_size);
+	ft_putchar('\n');
 	map_size = map_size + len;
 	if ((map = malloc(sizeof(char *) * (map_size + 1))) == NULL)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: phanna <phanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/02 22:56:46 by phanna            #+#    #+#             */
-/*   Updated: 2017/07/02 23:50:04 by phanna           ###   ########.fr       */
+/*   Updated: 2017/07/03 04:08:19 by phanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef	struct	s_pos
 	int	y;
 
 }				t_pos;
-
 char	***ft_read(char *av, char ***tetri, int *i);
 char	**ft_get_map_size(int nb_tetri, int len);
 char	**ft_move_tetri(char **str);
