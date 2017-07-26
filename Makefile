@@ -6,7 +6,7 @@
 #    By: phanna <phanna@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/02 18:09:27 by jcoutare          #+#    #+#              #
-#    Updated: 2017/07/21 15:39:22 by phanna           ###   ########.fr        #
+#    Updated: 2017/07/26 14:13:56 by phanna           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ CC = gcc
 
 LIBPATH = libft/libft.a
 
-CFLAGS = -Wall -Wextra 
+CFLAGS = -Wall -Werror -Wextra 
 
 all: $(NAME)
 

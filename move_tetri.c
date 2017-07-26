@@ -6,13 +6,13 @@
 /*   By: phanna <phanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 11:15:01 by phanna            #+#    #+#             */
-/*   Updated: 2017/07/26 09:05:24 by phanna           ###   ########.fr       */
+/*   Updated: 2017/07/26 14:18:49 by phanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static char	**move_up(int y_min, char **tab)
+char	**move_up(int y_min, char **tab)
 {
 	int i;
 
@@ -30,7 +30,7 @@ static char	**move_up(int y_min, char **tab)
 	return (tab);
 }
 
-static char	**move_left(int x_min, char **tab)
+char	**move_left(int x_min, char **tab)
 {
 	int tmp;
 	int i;
@@ -57,7 +57,7 @@ static char	**move_left(int x_min, char **tab)
 	return (tab);
 }
 
-static int	get_y_min(char **tab)
+int		get_y_min(char **tab)
 {
 	int x;
 	int y;
@@ -79,7 +79,7 @@ static int	get_y_min(char **tab)
 	return (y_min);
 }
 
-static int	get_x_min(char **tab)
+int		get_x_min(char **tab)
 {
 	int x;
 	int y;
@@ -98,7 +98,7 @@ static int	get_x_min(char **tab)
 	return (x_min);
 }
 
-t_tetri		*move_tetri(t_tetri *first)
+t_tetri	*move_tetri(t_tetri *first)
 {
 	t_tetri *tmp;
 

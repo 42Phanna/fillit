@@ -6,13 +6,13 @@
 /*   By: phanna <phanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 11:12:20 by phanna            #+#    #+#             */
-/*   Updated: 2017/07/26 13:17:52 by phanna           ###   ########.fr       */
+/*   Updated: 2017/07/26 14:17:53 by phanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static int		test_pos(t_tetri *first, char **tab, int len)
+int		test_pos(t_tetri *first, char **tab, int len)
 {
 	int i;
 	int j;
@@ -37,7 +37,7 @@ static int		test_pos(t_tetri *first, char **tab, int len)
 	return (1);
 }
 
-static char		**place_it(t_tetri *first, char **tab)
+char	**place_it(t_tetri *first, char **tab)
 {
 	int i;
 	int j;
@@ -58,7 +58,7 @@ static char		**place_it(t_tetri *first, char **tab)
 	return (tab);
 }
 
-static char		**delete(t_tetri *first, char **tab)
+char	**delete(t_tetri *first, char **tab)
 {
 	int i;
 	int j;
@@ -79,7 +79,7 @@ static char		**delete(t_tetri *first, char **tab)
 	return (tab);
 }
 
-int				isplace(t_tetri *first, char **tab, int size)
+int		isplace(t_tetri *first, char **tab, int size)
 {
 	size = size_map(tab);
 	if (first)

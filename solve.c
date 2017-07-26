@@ -6,7 +6,7 @@
 /*   By: phanna <phanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/20 15:04:04 by phanna            #+#    #+#             */
-/*   Updated: 2017/07/26 13:18:08 by phanna           ###   ########.fr       */
+/*   Updated: 2017/07/26 14:16:09 by phanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ char	**solve(t_tetri *first, char **tab, int nb_tetri)
 
 	i = -1;
 	len = 0;
+	size = 0;
 	move_tetri(first);
 	tab = new_tab(nb_tetri, len);
 	while (isplace(first, tab, size) == 0)
