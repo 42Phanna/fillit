@@ -6,7 +6,7 @@
 /*   By: phanna <phanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/17 17:00:45 by phanna            #+#    #+#             */
-/*   Updated: 2017/07/25 13:47:18 by phanna           ###   ########.fr       */
+/*   Updated: 2017/07/26 13:08:08 by phanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,6 @@ int		check_char(char *str)
 		if (str[i] != '#' && str[i] != '.' && str[i] != '\n')
 			return (0);
 	}
-//	ft_putstr("ht: ");
-//	ft_putnbr(ht);
-//	ft_putendl("");
-//	ft_putstr("dot: ");
-//	ft_putnbr(dot);
-//	ft_putendl("");
-//	ft_putstr("endline: ");
-//	ft_putnbr(endline);
-//	ft_putendl("");
 	if (ht != 4 || dot != 12 || endline != 4)
 		return (0);
 	return (1);

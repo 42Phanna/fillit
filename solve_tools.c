@@ -6,7 +6,7 @@
 /*   By: phanna <phanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 11:12:20 by phanna            #+#    #+#             */
-/*   Updated: 2017/07/25 15:07:29 by phanna           ###   ########.fr       */
+/*   Updated: 2017/07/26 13:17:52 by phanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static char		**place_it(t_tetri *first, char **tab)
 {
 	int i;
 	int j;
-	int	t = -1;
 
 	i = 0;
 	j = 0;
@@ -53,8 +52,6 @@ static char		**place_it(t_tetri *first, char **tab)
 				tab[first->y + i][first->x + j] = first->letter;
 			j++;
 		}
-	//	while(tab[++t])
-	//		ft_putendl(tab[t]);
 		j = 0;
 		i++;
 	}
@@ -82,29 +79,21 @@ static char		**delete(t_tetri *first, char **tab)
 	return (tab);
 }
 
-int				isplace(t_tetri *first, int len, char **tab)
+int				isplace(t_tetri *first, char **tab, int size)
 {
-	int	i;
-	int	j = -1;
-
-	i = -1;
-//	ft_putendl("OK1");
+	size = size_map(tab);
 	if (first)
 	{
-		while (first->y * first->x < len * len)
+		while (first->y * first->x < size * size)
 		{
-	//		ft_putendl("OK2");
-			if ((test_pos(first, tab, len)) == 1)
+			if ((test_pos(first, tab, size)) == 1)
 			{
 				tab = place_it(first, tab);
-		//		while (tab[++j])
-//ft_putendl(tab[j]);
-				if (isplace(first->next, len, tab) == 1)
+				if (isplace(first->next, tab, size) == 1)
 					return (1);
-		//		ft_putendl("OK3");
 				tab = delete(first, tab);
 			}
-			if (first->x < len)
+			if (first->x < (size - 1))
 				first->x++;
 			else
 			{
@@ -116,8 +105,5 @@ int				isplace(t_tetri *first, int len, char **tab)
 		first->y = 0;
 		return (0);
 	}
-	i = -1;
-	while (tab[++i])
-		ft_putendl(tab[i]);
 	return (1);
 }

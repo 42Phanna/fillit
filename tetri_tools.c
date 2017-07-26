@@ -6,7 +6,7 @@
 /*   By: phanna <phanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/17 16:55:53 by phanna            #+#    #+#             */
-/*   Updated: 2017/07/21 15:25:24 by phanna           ###   ########.fr       */
+/*   Updated: 2017/07/26 09:09:13 by phanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,4 @@ int	get_nb_tetri_map(char **map)
 	while (map[++i])
 		nb_tetri = nb_tetri + get_nb_tetri(map[i]);
 	return (nb_tetri);
-}
-
-int	get_size (int nb_tetri, int len)
-{
-	int	size;
-
-	size = 2;
-	while ((size * size) < (nb_tetri * 4))
-		++size;
-	size = size + len;
-	return (size);
 }

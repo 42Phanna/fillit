@@ -6,7 +6,7 @@
 /*   By: phanna <phanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/17 15:37:56 by phanna            #+#    #+#             */
-/*   Updated: 2017/07/25 13:42:00 by phanna           ###   ########.fr       */
+/*   Updated: 2017/07/26 09:00:28 by phanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	**new_tab(int nb_tetri, int len)
 	return (tab);
 }
 
-int	main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	int		nb_tetri;
 	char	**tab;
@@ -51,13 +51,12 @@ int	main(int ac, char **av)
 	}
 	if (!(map = flt_read(av[1])))
 	{
-		ft_putendl("error_read");
+		ft_putendl("error");
 		return (-1);
 	}
 	nb_tetri = get_nb_tetri_map(map);
 	if (check(map, nb_tetri) == 0)
 	{
-//		ft_putendl("check failed");
 		ft_putendl("error");
 		return (-1);
 	}

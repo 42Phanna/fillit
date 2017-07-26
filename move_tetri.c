@@ -6,13 +6,13 @@
 /*   By: phanna <phanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 11:15:01 by phanna            #+#    #+#             */
-/*   Updated: 2017/07/21 17:51:43 by phanna           ###   ########.fr       */
+/*   Updated: 2017/07/26 09:05:24 by phanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static char		**move_up(int y_min, char **tab)
+static char	**move_up(int y_min, char **tab)
 {
 	int i;
 
@@ -30,8 +30,7 @@ static char		**move_up(int y_min, char **tab)
 	return (tab);
 }
 
-
-static char		**move_left(int x_min, char **tab)
+static char	**move_left(int x_min, char **tab)
 {
 	int tmp;
 	int i;
@@ -58,7 +57,7 @@ static char		**move_left(int x_min, char **tab)
 	return (tab);
 }
 
-static int		get_y_min(char **tab)
+static int	get_y_min(char **tab)
 {
 	int x;
 	int y;
@@ -74,16 +73,13 @@ static int		get_y_min(char **tab)
 		if (y == 4)
 			y_min++;
 		else
-        {
-            return (y_min);
-        }
+			return (y_min);
 		y = 0;
 	}
-
 	return (y_min);
 }
 
-static int		get_x_min(char **tab)
+static int	get_x_min(char **tab)
 {
 	int x;
 	int y;

@@ -6,7 +6,7 @@
 /*   By: phanna <phanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/17 16:53:22 by phanna            #+#    #+#             */
-/*   Updated: 2017/07/25 15:08:28 by phanna           ###   ########.fr       */
+/*   Updated: 2017/07/26 13:08:56 by phanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ char	**fill_tab(char **tab, char *buff, int nb_tetri)
 	}
 	tab[j] = NULL;
 	j = -1;
-//	while(tab[++j])
-//		ft_putendl(tab[j]);
 	return (tab);
 }
 
@@ -53,12 +51,7 @@ char	**flt_read(char *argv)
 		return (NULL);
 	while ((ret = read(fd, buff, 4096)))
 		buff[ret] = '\0';
-//	ft_putendl("buff=");
-//	ft_putendl(buff);
 	nb_tetri = get_nb_tetri(buff);
-//ft_putstr("nb_tetri=");
-//	ft_putnbr(nb_tetri);
-//	ft_putendl("");
 	if (!(tmp = (char **)malloc(sizeof(char *) * (nb_tetri + 1))))
 		return (NULL);
 	if (first_test(buff) == 0)
@@ -67,11 +60,13 @@ char	**flt_read(char *argv)
 	return (tmp);
 }
 
-int				first_test(char *buf)
+int		first_test(char *buf)
 {
+	int	t;
 	int x;
 	int y;
 
+	t = 0;
 	x = 0;
 	y = 0;
 	while (buf[x] != '\0')
@@ -80,18 +75,16 @@ int				first_test(char *buf)
 			y++;
 		if (y == 4)
 		{
-	//		ft_putendl("#######");
-	//		ft_putnbr(x);
-	//		ft_putendl("");
-	//		ft_putendl("#######");
-			if (buf[x + 1] != '\n' && buf[x + 1] != '\0')
+			if ((buf[x + 1] != '\n' && buf[x + 1] != '\0') || x != (19 + t))
 				return (0);
-	//		ft_putendl("@@@@@@@");
 			if (buf[x + 1] == '\n')
 				x++;
+			t = t + 21;
 			y = 0;
 		}
 		x++;
 	}
+	if (buf[x - 1] == '\n' && buf[x - 2] == '\n')
+		return (0);
 	return (1);
 }
