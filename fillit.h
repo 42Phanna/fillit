@@ -6,7 +6,7 @@
 /*   By: phanna <phanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/17 15:28:47 by phanna            #+#    #+#             */
-/*   Updated: 2017/07/26 14:24:13 by phanna           ###   ########.fr       */
+/*   Updated: 2017/07/26 14:50:49 by phanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ char				**delete(t_tetri *first, char **tab);
 char				**place_it(t_tetri *first, char **tab);
 char				**fill_tab(char **tab, char *buff, int nb_tetri);
 char				**solve(t_tetri *start, char **tab, int nb_tetri);
+
+void				fillit_usage();
 
 t_tetri				*move_tetri(t_tetri *first);
 t_tetri				*newtetri(char **tetri, int num);

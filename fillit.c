@@ -6,11 +6,16 @@
 /*   By: phanna <phanna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/17 15:37:56 by phanna            #+#    #+#             */
-/*   Updated: 2017/07/26 09:00:28 by phanna           ###   ########.fr       */
+/*   Updated: 2017/07/26 14:50:44 by phanna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+void	fillit_usage(void)
+{
+	ft_putendl("usage: ./fillit \"just oneargument here\"");
+}
 
 char	**new_tab(int nb_tetri, int len)
 {
@@ -46,7 +51,7 @@ int		main(int ac, char **av)
 	tab = NULL;
 	if (ac != 2)
 	{
-		ft_putendl("too many arguments");
+		fillit_usage();
 		return (-1);
 	}
 	if (!(map = flt_read(av[1])))
